@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.EntryProviderBuilder
 import androidx.navigation3.runtime.entry
 import androidx.compose.ui.graphics.Color
+import androidx.navigation3.runtime.EntryProvider
 import com.example.nav3recipes.ui.theme.colors
 import dagger.Module
 import dagger.Provides
@@ -50,7 +51,7 @@ object ConversationModule {
 
     @IntoSet
     @Provides
-    fun provideEntryProviderBuilder(backStack: SnapshotStateList<Any>): EntryProviderBuilder<Any>.() -> Unit =
+    fun provideEntryProviderInstaller(backStack: SnapshotStateList<Any>): EntryProviderInstaller =
         {
             entry<ConversationList> {
                 ConversationListScreen(

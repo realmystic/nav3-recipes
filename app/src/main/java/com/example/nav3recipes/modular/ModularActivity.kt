@@ -21,7 +21,9 @@ import javax.inject.Inject
  * Features (Conversation and Profile) are split into two modules: 
  * - api: defines the public facing routes for this feature
  * - impl: defines the entryProviders for this feature, these are injected into the app's main activity
- * The common module defines how the back stack should be created.
+ * The common module defines:
+ * - how the back stack should be created
+ * - a type that should be used by feature modules to inject entryProviders into the app's main activity
  * The app module creates the back stack by supplying a start destination and provides this back stack to the rest of the app module (i.e. MainActivity) and the feature modules. 
  */
 @AndroidEntryPoint
@@ -31,7 +33,7 @@ class ModularActivity : ComponentActivity() {
     lateinit var backStack: SnapshotStateList<Any>
 
     @Inject
-    lateinit var entryProviderBuilders: Set<@JvmSuppressWildcards EntryProviderBuilder<Any>.() -> Unit>
+    lateinit var entryProviderBuilders: Set<@JvmSuppressWildcards EntryProviderInstaller>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

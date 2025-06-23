@@ -32,7 +32,7 @@ object ProfileModule {
 
     @IntoSet
     @Provides
-    fun provideEntryProviderBuilder( backStack: SnapshotStateList<Any>) : EntryProviderBuilder<Any>.() -> Unit = {
+    fun provideEntryProviderInstaller(backStack: SnapshotStateList<Any>) : EntryProviderInstaller = {
         entry<Profile>{
             ProfileScreen()
         }
