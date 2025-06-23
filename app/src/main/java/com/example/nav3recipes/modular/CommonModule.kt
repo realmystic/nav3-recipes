@@ -13,14 +13,7 @@ import javax.inject.Inject
 
 typealias EntryProviderInstaller = EntryProviderBuilder<Any>.() -> Unit
 
-@Module
-@InstallIn(ActivityRetainedComponent::class)
-object CommonModule {
-    @Provides
-    @ActivityRetainedScoped
-    fun provideBackStackFactory() : BackStackFactory = BackStackFactory()
-}
-
+@ActivityRetainedScoped
 class BackStackFactory @Inject constructor() {
     fun create(startDestination: Any) : SnapshotStateList<Any> = mutableStateListOf(startDestination)
 }
