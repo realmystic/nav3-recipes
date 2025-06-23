@@ -22,15 +22,16 @@ import javax.inject.Inject
  * - api: defines the public facing routes for this feature
  * - impl: defines the entryProviders for this feature, these are injected into the app's main activity
  * The common module defines:
- * - how the back stack should be created
+ * - a common navigator class that exposes a back stack and methods to modify that back stack
  * - a type that should be used by feature modules to inject entryProviders into the app's main activity
- * The app module creates the back stack by supplying a start destination and provides this back stack to the rest of the app module (i.e. MainActivity) and the feature modules. 
+ * The app module creates the navigator by supplying a start destination and provides this navigator
+ * to the rest of the app module (i.e. MainActivity) and the feature modules.
  */
 @AndroidEntryPoint
 class ModularActivity : ComponentActivity() {
 
     @Inject
-    lateinit var backStack: SnapshotStateList<Any>
+    lateinit var navigator: Navigator
 
     @Inject
     lateinit var entryProviderBuilders: Set<@JvmSuppressWildcards EntryProviderInstaller>
@@ -41,9 +42,9 @@ class ModularActivity : ComponentActivity() {
         setContent {
             Scaffold { paddingValues ->
                 NavDisplay(
-                    backStack = backStack,
+                    backStack = navigator.backStack,
                     modifier = Modifier.padding(paddingValues),
-                    onBack = { backStack.removeLastOrNull() },
+                    onBack = { navigator.goBack() },
                     entryProvider = entryProvider {
                         entryProviderBuilders.forEach { builder -> this.builder() }
                     }

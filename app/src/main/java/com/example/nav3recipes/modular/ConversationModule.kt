@@ -43,17 +43,17 @@ object ConversationModule {
 
     @IntoSet
     @Provides
-    fun provideEntryProviderInstaller(backStack: SnapshotStateList<Any>): EntryProviderInstaller =
+    fun provideEntryProviderInstaller(navigator: Navigator): EntryProviderInstaller =
         {
             entry<ConversationList> {
                 ConversationListScreen(
                     onConversationClicked = { conversationDetail ->
-                        backStack.add(conversationDetail)
+                        navigator.goTo(conversationDetail)
                     }
                 )
             }
             entry<ConversationDetail> { key ->
-                ConversationDetailScreen(key) { backStack.add(Profile) }
+                ConversationDetailScreen(key) { navigator.goTo(Profile) }
             }
         }
 }
