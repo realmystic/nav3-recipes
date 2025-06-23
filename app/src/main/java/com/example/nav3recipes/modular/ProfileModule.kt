@@ -1,25 +1,22 @@
 package com.example.nav3recipes.modular
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation3.runtime.EntryProviderBuilder
-import androidx.navigation3.runtime.entry
-import androidx.compose.foundation.background
-import androidx.compose.ui.graphics.Color
-import com.example.nav3recipes.ui.theme.colors
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.entry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.multibindings.IntoSet
 
 // API
@@ -27,7 +24,7 @@ object Profile
 
 // IMPLEMENTATION
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 object ProfileModule {
 
     @IntoSet

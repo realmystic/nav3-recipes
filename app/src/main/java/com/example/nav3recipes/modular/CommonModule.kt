@@ -6,18 +6,18 @@ import androidx.navigation3.runtime.EntryProviderBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 typealias EntryProviderInstaller = EntryProviderBuilder<Any>.() -> Unit
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 object CommonModule {
     @Provides
-    @Singleton
+    @ActivityRetainedScoped
     fun provideBackStackFactory() : BackStackFactory = BackStackFactory()
 }
 
