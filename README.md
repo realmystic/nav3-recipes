@@ -20,7 +20,7 @@ These are the recipes and what they demonstrate.
 - **[Conditional navigation](app/src/main/java/com/example/nav3recipes/conditional)**: Switch to a different navigation flow when a condition is met. For example, for authentication or first-time user onboarding.
 
 **Architecture**
-- **[Modularized navigation code](app/src/main/java/com/example/nav3recipes/modular)**: Demonstrates how to decouple navigation code into separate modules. 
+- **[Modularized navigation code](app/src/main/java/com/example/nav3recipes/modular/hilt)**: Demonstrates how to decouple navigation code into separate modules (uses Dagger/Hilt for DI). 
 
 **Passing navigation arguments to ViewModels**
 - **[Basic ViewModel](app/src/main/java/com/example/nav3recipes/passingarguments/basicviewmodels)**: Navigation arguments are passed to a ViewModel constructed using `viewModel()`
