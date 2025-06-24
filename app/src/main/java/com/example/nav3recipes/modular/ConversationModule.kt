@@ -59,7 +59,7 @@ object ConversationModule {
 }
 
 @Composable
-fun ConversationListScreen(
+private fun ConversationListScreen(
     onConversationClicked: (ConversationDetail) -> Unit
 ) {
     LazyColumn(
@@ -89,7 +89,7 @@ fun ConversationListScreen(
 }
 
 @Composable
-fun ConversationDetailScreen(
+private fun ConversationDetailScreen(
     conversationDetail: ConversationDetail,
     onProfileClicked: () -> Unit
 ) {

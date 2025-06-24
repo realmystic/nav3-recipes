@@ -37,7 +37,7 @@ object ProfileModule {
 }
 
 @Composable
-fun ProfileScreen() {
+private fun ProfileScreen() {
     val profileColor = MaterialTheme.colorScheme.surfaceVariant
     Column(
         modifier = Modifier
