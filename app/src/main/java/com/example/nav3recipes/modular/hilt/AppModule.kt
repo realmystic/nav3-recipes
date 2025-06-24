@@ -1,4 +1,4 @@
-package com.example.nav3recipes.modular
+package com.example.nav3recipes.modular.hilt
 
 import dagger.Module
 import dagger.Provides

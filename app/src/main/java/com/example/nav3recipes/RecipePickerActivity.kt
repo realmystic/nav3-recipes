@@ -28,7 +28,7 @@ import com.example.nav3recipes.basicdsl.BasicDslActivity
 import com.example.nav3recipes.basicsaveable.BasicSaveableActivity
 import com.example.nav3recipes.commonui.CommonUiActivity
 import com.example.nav3recipes.conditional.ConditionalActivity
-import com.example.nav3recipes.modular.ModularActivity
+import com.example.nav3recipes.modular.hilt.ModularActivity
 import com.example.nav3recipes.passingarguments.basicviewmodels.BasicViewModelsActivity
 import com.example.nav3recipes.passingarguments.injectedviewmodels.InjectedViewModelsActivity
 import com.example.nav3recipes.scenes.materiallistdetail.MaterialListDetailActivity
