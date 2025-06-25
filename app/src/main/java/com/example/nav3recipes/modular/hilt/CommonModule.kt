@@ -10,7 +10,7 @@ import javax.inject.Inject
 typealias EntryProviderInstaller = EntryProviderBuilder<Any>.() -> Unit
 
 @ActivityRetainedScoped
-class Navigator @Inject constructor(startDestination: Any) {
+class Navigator(startDestination: Any) {
     val backStack : SnapshotStateList<Any> = mutableStateListOf(startDestination)
 
     fun goTo(destination: Any){
