@@ -23,9 +23,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
@@ -62,7 +66,14 @@ class MaterialListDetailActivity : ComponentActivity() {
         setContent {
 
             val backStack = rememberNavBackStack(ConversationList)
-            val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>()
+
+            // Override the defaults so that there isn't a horizontal space between the panes.
+            val windowAdaptiveInfo = currentWindowAdaptiveInfo()
+            val directive = remember(windowAdaptiveInfo) {
+                calculatePaneScaffoldDirective(windowAdaptiveInfo)
+                    .copy(horizontalPartitionSpacerSize = 0.dp)
+            }
+            val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
             NavDisplay(
                 backStack = backStack,
