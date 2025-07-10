@@ -71,16 +71,19 @@ class InjectedViewModelsActivity : ComponentActivity() {
                 entryProvider = entryProvider {
                     entry<RouteA> {
                         ContentGreen("Welcome to Nav3") {
-                            Button(onClick = {
-                                backStack.add(RouteB("123"))
-                            }) {
-                                Text("Click to navigate")
+                            for (i in 0 .. 10){
+                                Button(onClick = {
+                                    backStack.add(RouteB("$i"))
+                                }) {
+                                    Text("$i")
+                                }
                             }
                         }
                     }
                     entry<RouteB> { key ->
                         val viewModel = hiltViewModel<RouteBViewModel, RouteBViewModel.Factory>(
                             creationCallback = { factory ->
+                                println("Creating viewModel for $key")
                                 factory.create(key)
                             }
                         )

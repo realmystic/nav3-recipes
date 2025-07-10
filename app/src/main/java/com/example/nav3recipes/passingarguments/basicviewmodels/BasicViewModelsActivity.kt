@@ -65,12 +65,12 @@ class BasicViewModelsActivity : ComponentActivity() {
                 entryProvider = entryProvider {
                     entry<RouteA> {
                         ContentGreen("Welcome to Nav3") {
-                            Button(onClick = {
-                                backStack.add(
-                                    RouteB("123")
-                                )
-                            }) {
-                                Text("Click to navigate")
+                            for (i in 0 .. 10){
+                                Button(onClick = {
+                                    backStack.add(RouteB("$i"))
+                                }) {
+                                    Text("$i")
+                                }
                             }
                         }
                     }
