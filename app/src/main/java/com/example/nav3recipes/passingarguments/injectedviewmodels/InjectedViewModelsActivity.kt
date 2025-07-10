@@ -19,6 +19,7 @@ package com.example.nav3recipes.passingarguments.injectedviewmodels
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +35,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.example.nav3recipes.content.ContentBlue
 import com.example.nav3recipes.content.ContentGreen
+import com.example.nav3recipes.passingarguments.basicviewmodels.RouteB
 import com.example.nav3recipes.ui.setEdgeToEdgeConfig
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -71,11 +73,13 @@ class InjectedViewModelsActivity : ComponentActivity() {
                 entryProvider = entryProvider {
                     entry<RouteA> {
                         ContentGreen("Welcome to Nav3") {
-                            for (i in 0 .. 10){
-                                Button(onClick = {
-                                    backStack.add(RouteB("$i"))
-                                }) {
-                                    Text("$i")
+                            LazyColumn {
+                                items(10) { i ->
+                                    Button(onClick = {
+                                        backStack.add(RouteB("$i"))
+                                    }) {
+                                        Text("$i")
+                                    }
                                 }
                             }
                         }
