@@ -91,7 +91,6 @@ class InjectedViewModelsActivity : ComponentActivity() {
                             // tl;dr: Make sure you use rememberViewModelStoreNavEntryDecorator()
                             // if you want a new ViewModel for each new navigation key instance.
                             creationCallback = { factory ->
-                                println("Creating viewModel for $key")
                                 factory.create(key)
                             }
                         )
