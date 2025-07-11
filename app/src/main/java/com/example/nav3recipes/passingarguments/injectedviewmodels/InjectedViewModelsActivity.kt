@@ -65,6 +65,11 @@ class InjectedViewModelsActivity : ComponentActivity() {
             NavDisplay(
                 backStack = backStack,
                 onBack = { backStack.removeLastOrNull() },
+
+                // In order to add the `ViewModelStoreNavEntryDecorator` (see comment below for why)
+                // we also need to add the default `NavEntryDecorator`s as well. These provide
+                // extra information to the entry's content to enable it to display correctly
+                // and save its state.
                 entryDecorators = listOf(
                     rememberSceneSetupNavEntryDecorator(),
                     rememberSavedStateNavEntryDecorator(),
