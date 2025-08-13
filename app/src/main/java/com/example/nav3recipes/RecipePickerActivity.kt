@@ -119,11 +119,11 @@ class RecipePickerActivity : ComponentActivity() {
                             headlineContent = {
                                 Text(
                                     text = item.name,
-                                    fontWeight = FontWeight.Bold // Make text bold
+                                    fontWeight = FontWeight.Bold
                                 )
                             },
-                            modifier = Modifier.height(48.dp), // Set a smaller height
-                            colors = ListItemDefaults.colors( // Set background color
+                            modifier = Modifier.height(48.dp),
+                            colors = ListItemDefaults.colors(
                                 containerColor = MaterialTheme.colorScheme.surfaceVariant
                             )
                         )
