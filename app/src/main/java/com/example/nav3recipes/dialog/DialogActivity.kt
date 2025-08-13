@@ -83,7 +83,7 @@ class DialogActivity : ComponentActivity() {
                         )
                     ) { key ->
                         ContentBlue(
-                            title = "Route id: ${key.id} ",
+                            title = "Route id: ${key.id}",
                             modifier = Modifier.clip(
                                 shape = RoundedCornerShape(16.dp)
                             )
